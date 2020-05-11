@@ -1,0 +1,22 @@
+{
+  "name": "node-contacts",
+  "version": "0.1.0",
+  "description": "cli contacts app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garridorafa/Node_app.git"
+  },
+  "author": "Rafael Garrido",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garridorafa/Node_app/issues"
+  },
+  "homepage": "https://github.com/garridorafa/Node_app#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}

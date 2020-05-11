@@ -6,7 +6,6 @@ const contactsPath = './contacts.json';
 dataConfirm();
 
 module.exports = {
-  dataConfirm,
   addContact,
   edit,
   deleteContact,
