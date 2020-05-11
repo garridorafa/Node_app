@@ -3,12 +3,23 @@ const fs = require('fs');
 let list = [];
 const contactsPath = './contacts.json';
 
-dataConfirm(); // wtf?
+dataConfirm();
 
+module.exports = {
+  dataConfirm,
+  addContact,
+  edit,
+  deleteContact,
+  findContact,
+  findContactIndex,
+  reset,
+  list
+}
 
 function dataConfirm() {
   if (!fs.existsSync(contactsPath)) {
     fs.writeFileSync(contactsPath, "[]");
+    list = []
   } else {
     list = JSON.parse(fs.readFileSync(contactsPath, 'utf8'));
   };
@@ -18,9 +29,10 @@ function addContact(name, phone) {
   list.push({ id: list.length, name, phone })
   saveData();
 }
+
 function edit(id, name, phone) {
   const index = findContactIndex(id);
-  list[index] = {id, name, phone};
+  list[index] = { id, name, phone };
   saveData();
 }
 
@@ -42,17 +54,6 @@ function saveData() {
   fs.writeFileSync(contactsPath, JSON.stringify(list));
 }
 
-function reset () {
+function reset() {
   fs.unlinkSync(contactsPath);
-}
-
-module.exports = {
-  dataConfirm,
-  addContact,
-  edit,
-  deleteContact,
-  findContact,
-  findContactIndex,
-  reset,
-  list
 }
