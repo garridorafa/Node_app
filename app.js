@@ -38,11 +38,15 @@ function executeCommand(db, templates) {
 
     function findHandle() {
         const id = Number.parseInt(process.argv[3])
-        templates.printContact(db.findContact(id));
+        db.findContact(id, (contacts) => printEach(contacts));
+    }
+
+    function printEach(contacts) {
+        contacts.map((contact) => templates.printContact(contact));
     }
 
     function listHandle() {
-        templates.printAllContacts(db.list);
+        db.printAll(result => templates.printAllContacts(result));
     }
 
     function editHandle() {

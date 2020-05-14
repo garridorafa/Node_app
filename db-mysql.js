@@ -7,17 +7,13 @@ let con = mysql.createConnection({
     database: 'contactsdb'
 });
 
-let list = [];
-
-dataConfirm();
-
 module.exports = {
   addContact,
   edit,
   deleteContact,
   findContact,
   reset,
-  list
+  printAll
 }
 
 function dbConnect() {
@@ -30,13 +26,12 @@ function dbDesconnect() {
   con.end();
 }
 
-
-function dataConfirm() {
+function printAll(cb) {
   dbConnect();
   let sql = "SELECT * FROM contacts";
   con.query(sql, (err, result, fields) => {
     if (err) throw err;
-    list = result;
+    cb(result);
   })
   dbDesconnect();
 }
@@ -71,12 +66,12 @@ function deleteContact(id) {
   console.log("contact deleted!");
 };
 
-function findContact(id) {
+function findContact(id, cb) {
   dbConnect();
   let sql = "SELECT * FROM contacts WHERE id='" + id + "'";
   con.query(sql, (err, result, fields) => {
     if (err) throw err;
-    list = result;
+    cb(result);
   })
   dbDesconnect();  
 };
