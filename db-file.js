@@ -3,8 +3,6 @@ const fs = require('fs');
 let list = [];
 const contactsPath = './contacts.json';
 
-dataConfirm();
-
 module.exports = {
   addContact,
   edit,
@@ -12,16 +10,21 @@ module.exports = {
   findContact,
   findContactIndex,
   reset,
-  list
+  printAll
 }
 
-function dataConfirm() {
+dataconfirm();
+
+function dataconfirm() {
   if (!fs.existsSync(contactsPath)) {
     fs.writeFileSync(contactsPath, "[]");
-    list = []
   } else {
     list = JSON.parse(fs.readFileSync(contactsPath, 'utf8'));
   };
+}
+
+function printAll(cb) {
+  cb(list);
 }
 
 function addContact(name, phone) {
@@ -41,12 +44,13 @@ function deleteContact(id) {
   saveData();
 };
 
-function findContact(id) {
-  return list.find(contact => contact.id === id);
-}
-
 function findContactIndex(id) {
   return list.findIndex(contact => contact.id === id);
+}
+
+function findContact(id, cb) {
+  contact = list.find(contact => contact.id === id);  
+  cb(contact);
 }
 
 function saveData() {

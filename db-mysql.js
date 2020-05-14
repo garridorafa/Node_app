@@ -71,7 +71,7 @@ function findContact(id, cb) {
   let sql = "SELECT * FROM contacts WHERE id='" + id + "'";
   con.query(sql, (err, result, fields) => {
     if (err) throw err;
-    cb(result);
+    cb(result[0]);
   })
   dbDesconnect();  
 };
