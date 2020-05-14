@@ -1,4 +1,4 @@
-const db = require('./db-file');
+const db = require('./db-mysql');
 const templates = require('./templates');
 const app = require('./app');
 

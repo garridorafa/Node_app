@@ -41,7 +41,6 @@ function addContact(name, phone) {
   dbConnect();
   con.query(sql, (err, result) => {
     if (err) throw err;
-    console.log("Contact added!");
   })
   dbDesconnect();
 }
@@ -51,7 +50,6 @@ function edit(id, name, phone) {
   dbConnect();
   con.query(sql, (err, result) => {
     if (err) throw err;
-    console.log("Contact edited!");
   })
   dbDesconnect();
 }
@@ -63,7 +61,6 @@ function deleteContact(id) {
     if (err) throw err;
   })
   dbDesconnect();
-  console.log("contact deleted!");
 };
 
 function findContact(id, cb) {
@@ -73,7 +70,7 @@ function findContact(id, cb) {
     if (err) throw err;
     cb(result[0]);
   })
-  dbDesconnect();  
+  dbDesconnect();
 };
 
 function reset() {
