@@ -4,6 +4,8 @@
   "description": "cli contacts app",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm install",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
